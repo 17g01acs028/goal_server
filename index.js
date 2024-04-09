@@ -71,3 +71,6 @@ mongoose
     //User.insertMany(users);
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+
+  export default app;
