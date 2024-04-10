@@ -58,9 +58,9 @@ export const login = async (req, res) => {
       return res.status(400).json({ msg: "You are Blocked from using this system, Please request admin to ublock you. " });
     }
 
-    console.log(process.env.JWT_SECRET)
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    const token = jwt.sign({ id: user._id }, "steve");
 
     user.password = "";
     console.log(user);
@@ -85,7 +85,7 @@ const login2 = (req, res) => {
       const accessToken = jwt.sign({
           username: userCredentials.username,
           email: userCredentials.email
-      }, process.env.ACCESS_TOKEN_SECRET, {
+      }, "steve", {
           expiresIn: '10m'
       });
       // Creating refresh token not that expiry of refresh 
@@ -93,7 +93,7 @@ const login2 = (req, res) => {
 
       const refreshToken = jwt.sign({
           username: userCredentials.username,
-      }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '1d' });
+      }, "steve", { expiresIn: '1d' });
 
       // Assigning refresh token in http-only cookie 
       res.cookie('jwt', refreshToken, {
@@ -130,7 +130,7 @@ export const refresh = async (req, res) => {
           const accessToken = jwt.sign({
             username: userCredentials.username,
             email: userCredentials.email
-          }, process.env.JWT_SECRET, {
+          }, "steve", {
             expiresIn: '10m'
           });
           return res.json({ accessToken });
