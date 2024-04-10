@@ -40,7 +40,7 @@ app.use("/categories", categoryRoutes);
 const PORT = process.env.PORT || 6001;
 console.log(PORT)
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect("mongodb+srv://steve:steve%402030@goal.zmopkqd.mongodb.net/health_system", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
